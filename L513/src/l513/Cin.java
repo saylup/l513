@@ -7,7 +7,6 @@ public class Cin {
     private static int size;
     private static int[][] matr;
     private static String mess="";
-
     public static String getMess() {
         return mess;
     }
@@ -16,9 +15,10 @@ public class Cin {
         Cin.mess = mess;
     }
 
-    public void streamA(String nameFile){//чтение из файла
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(".//src//l513//"+nameFile+".txt"));) {
+    public void streamA(File file){//чтение из файла
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file));) {
             String s="";
+            System.out.println(1);
             int symbol = bufferedReader.read();
             char c = (char) symbol;
             s+=c;
@@ -51,8 +51,8 @@ public class Cin {
             setMess("Произошла ошибка ввода/вывода");
         }
     }
-    public void streamB(String nameFile){//чтение из файла
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(".//src//l513//"+nameFile+".txt"));) {
+    public void streamB(File file){//чтение из файла
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file));) {
             String s="";
             int symbol = bufferedReader.read();
             char c = (char) symbol;
@@ -77,8 +77,8 @@ public class Cin {
         }
 
     }
-    public void streamC(String nameFile) throws IOException {//чтение из файла
-        try(DataInputStream dos = new DataInputStream(new FileInputStream(".//src//l513//"+nameFile+".bin")))
+    public void streamC(File file) throws IOException {//чтение из файла
+        try(DataInputStream dos = new DataInputStream(new FileInputStream(file)))
         {
             int size = dos.available();
             int a;
@@ -94,8 +94,8 @@ public class Cin {
             setMess("Произошла ошибка ввода/вывода");
         }
     }
-    public void save1(String nameFile,String s) throws IOException {//чтение из файла
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(".//src//l513//"+nameFile+".txt"));) {
+    public void save1(File file,String s) throws IOException {//чтение из файла
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file+".txt"));) {
             bufferedWriter.write(s);
         } catch (FileNotFoundException e) {
             System.out.println("Файл с данным именем не найден.");
@@ -107,8 +107,8 @@ public class Cin {
 
         }
     }
-    public void save2(String nameFile,String s) throws IOException {//чтение из файла
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(".//src//l513//"+nameFile+".txt"));) {
+    public void save2(File file,String s) throws IOException {//чтение из файла
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file+".txt"));) {
             bufferedWriter.write(s);
         } catch (FileNotFoundException e) {
             System.out.println("Файл с данным именем не найден.");
@@ -120,16 +120,14 @@ public class Cin {
 
         }
     }
-    public void save3(String nameFile) throws IOException {//чтение из файла
-        try(DataOutputStream dos = new DataOutputStream(new FileOutputStream(".//src//l513//"+nameFile+".bin")))
-        {
-            Matrix m = new Matrix();
-            int size = m.getSize();
-            for (int i=0;i<size;i++)
-                for (int j=0;j<size;j++)
-                    dos.writeByte(m.getElement(i,j));
+    public void save3(File file,String s) throws IOException {//чтение из файла
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file+".txt"));) {
+            bufferedWriter.write(s);
+        } catch (FileNotFoundException e) {
+            System.out.println("Файл с данным именем не найден.");
+            setMess("Файл с данным именем не найден.");
         }
-        catch(IOException e){
+        catch (IOException e) {
             System.out.println("Произошла ошибка ввода/вывода");
             setMess("Произошла ошибка ввода/вывода");
         }

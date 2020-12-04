@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Matrix {
     //Описание класса для работы с матрицей
     // Объявление внутренних полей объекта этого класса.
-    private static int size = 0;  // Поле для хранения размерности матрицы
-    private static int[][] matr;  //Поле для хранения самой матрицы
+    static int size = 0;  // Поле для хранения размерности матрицы
+    static int[][] matr;  //Поле для хранения самой матрицы
 
     // Объявление методов, определяющих поведение объектов-экземпляров этого класса
     public Matrix(){//конструктор по умолчанию
@@ -37,13 +37,13 @@ public class Matrix {
             this.matr=n;
     }
 
-    public int getSize(){
+    public int  getSize(){
         return size;
     }
-    public void setElement(int i, int j, int val){
-        this.matr[i][j] = val;
+    public static void setElement(int i, int j, int val){
+        matr[i][j] = val;
     }
-    public int getElement(int i,int j){
+    public int   getElement(int i,int j){
         return matr[i][j];
     }
 

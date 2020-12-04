@@ -10,21 +10,17 @@ public class MainWindow extends JFrame {
     private JTextArea label1 = new JTextArea("Введите строку\nдля преобразования\n(Задание 1 и 2):");
     private JTextArea label2 = new JTextArea("Введите номер\nслова для переворота:");
     private JTextArea label3 = new JTextArea("Введите размерность\nматрицы:");
-    private JLabel label4 = new JLabel("Файл для чтения:");
     private JLabel label6 = new JLabel("Ответ на задание:");
-    private JLabel label7 = new JLabel("Файл для записи:");
     static JTextArea label5 = new JTextArea();
     static JButton buttonTask=new JButton("Do task");
     static JButton buttonOpen = new JButton("Open");
     static JButton buttonSave = new JButton("Save");
     static JTextField  text = new JTextField ();
-    static JTextField  text1 = new JTextField ();
     static SpinnerModel value = new SpinnerNumberModel(1, 1, 10, 1);
     static SpinnerModel value1 = new SpinnerNumberModel(1, 1, 10, 1);
     static JSpinner spin1 = new JSpinner(value);
     static JSpinner spin2 = new JSpinner(value1);
-    static JTextField  text3 = new JTextField ();
-
+    JScrollPane scroll = new JScrollPane(label5, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
     public MainWindow(){
         super("MainWindow");
@@ -34,7 +30,8 @@ public class MainWindow extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         //создаём контейнер, описывающий структуру окна
         Container container = this.getContentPane();
-        container.setLayout(new GridLayout(6,3));
+        container.setLayout(new GridLayout(5,3));
+
 //добавляем RadioButton в одну группу для того, чтобы можно было выбрать только один из них
         ButtonGroup group = new ButtonGroup();
         group.add(task1RadioButton);
@@ -56,9 +53,9 @@ public class MainWindow extends JFrame {
         label3.setBackground(null);
 
         //и выравнивание
-        label4.setHorizontalAlignment(SwingConstants.CENTER);
+        //label4.setHorizontalAlignment(SwingConstants.CENTER);
         label6.setHorizontalAlignment(SwingConstants.CENTER);
-        label7.setHorizontalAlignment(SwingConstants.CENTER);
+        //label7.setHorizontalAlignment(SwingConstants.CENTER);
 
         // добавляем в контейнер поочерёдно блоки
         container.add(task1RadioButton);
@@ -74,15 +71,10 @@ public class MainWindow extends JFrame {
         container.add(spin2);
 
         container.add(label6);
-        container.add(label5);
+        container.add(scroll);
         container.add(buttonTask);
-
-        container.add(label4);
-        container.add(text3);
+        
         container.add(buttonOpen);
-
-        container.add(label7);
-        container.add(text1);
         container.add(buttonSave);
 
         //создаём слушателей для обработки нажатия кнопок
